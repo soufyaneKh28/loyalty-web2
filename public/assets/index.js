@@ -30,7 +30,7 @@ import message from "./message.png";
 import star from "./star.png";
 import vision from "./vision.png";
 import innovaition from "./innovation.webp";
-
+import notFound from "./not-found.svg";
 import downArrow from "./down-arrow.png";
 import uk from "./uk.png";
 import ar from "./ar.webp";
@@ -67,4 +67,5 @@ export {
   nextSvg,
   uk,
   ar,
+  notFound,
 };

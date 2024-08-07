@@ -124,7 +124,7 @@ async function Page({ params }) {
       projectObj.project_name.replaceAll(" ", "-")
     );
     console.log("tyhis is project params.projectTitle ", params.projectTitle);
-    // redirect(`/en/not-found`);
+    redirect(`/en/not-found`);
   }
   console.log("its project", project);
   return (

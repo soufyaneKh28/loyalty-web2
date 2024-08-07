@@ -28,21 +28,22 @@ import { Menubar, MotionLayout } from "@/components";
 const socialMedia = [
   {
     icon: facebook,
-    link: "",
+    link: "https://www.facebook.com/loyaltysocial",
   },
   {
     icon: instagram,
-    link: "",
+    link: "https://www.instagram.com/LOYALTYSOCIAL/",
   },
   {
     icon: linkedin,
-    link: "",
+    link: "https://www.linkedin.com/company/loyaltysocial",
   },
   {
     icon: x,
-    link: "",
+    link: "https://x.com/loyaltysocial",
   },
 ];
+
 
 // async function getBlogsData() {
 //   const res = await fetch(

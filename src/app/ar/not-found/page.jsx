@@ -14,12 +14,12 @@ const notfound = () => {
     <main className=" mt-[100px]">
       <div className=" container flex flex-col md:flex-row items-center md:justify-between">
         <div className=" ">
-          <h1 className=" font-bold text-[28px]">Page not found</h1>
+          <h1 className=" font-bold text-[28px]">لم يتم العثور على الصفحة</h1>
           <p className=" max-w-[400px] my-3">
-            Oops! It looks like something is going wrong It looks like we can`t
-            find the page you`e looking for, make sure you typed the correct URL
+            عفواً! يبدو أن هناك خطأ ما يبدو أننا لا نستطيع العثور على الصفحة
+            التي تبحث عنها، تأكد من كتابة عنوان URL الصحيح
           </p>
-          <Button href={"/en/home"}>Go to home page</Button>
+          <Button href={"/ar/home"}>انتقل إلى الصفحة الرئيسية</Button>
         </div>
         <div>
           <Image src={notFound} alt="notfound"></Image>
