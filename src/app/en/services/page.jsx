@@ -13,14 +13,47 @@ import React from "react";
 import data from "../../content-en";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Our Services | Digital Marketing, Brand Development, and Programming",
-  description:
-    " Explore our comprehensive services at Loyalty Agency, including digital marketing, brand development, and programming. Our expert team in Turkey, Dubai, and the USA is ready to elevate your brand.",
-  keywords:
-    "services, digital marketing, brand development, programming, Loyalty Agency, Turkey, Dubai, USA, elevate your brand",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Services);
+    return {
+      title: page.pageseo.Services.pageseo_title,
+      description: `${page.pageseo.Services.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Services.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 // async function getData() {
 //   const res = await fetch(
 //     "https://seenfox.com/api/get_data.php?actions=team,logo&lang_code=en"

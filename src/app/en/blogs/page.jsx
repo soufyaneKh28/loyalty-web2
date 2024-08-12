@@ -18,30 +18,63 @@ import { MotionContainer, MotionLayout } from "@/components";
 const socialMedia = [
   {
     icon: facebook,
-    link: "",
+    link: "https://www.facebook.com/loyaltysocial",
   },
   {
     icon: instagram,
-    link: "",
+    link: "https://www.instagram.com/LOYALTYSOCIAL/",
   },
   {
     icon: linkedin,
-    link: "",
+    link: "https://www.linkedin.com/company/loyaltysocial",
   },
   {
     icon: x,
-    link: "",
+    link: "https://x.com/loyaltysocial",
   },
 ];
 
-export const metadata = {
-  title: "Our Blogs | Insights and Trends by Loyalty Agency",
-  description:
-    "Read our blogs to gain insights and stay updated on the latest trends in brand development, digital marketing, and programming. Loyalty Agency shares expert knowledge to help your business succeed.",
-  keywords:
-    "blogs, insights, trends, brand development, digital marketing, programming, Loyalty Agency, expert knowledge",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Blogs);
+    return {
+      title: page.pageseo.Blogs.pageseo_title,
+      description: `${page.pageseo.Blogs.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Blogs.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 export const productsLength = data.blogs.length;
 export const defaultPage = 1;
 export const itemsPerPage = 6;

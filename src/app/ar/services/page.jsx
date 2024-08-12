@@ -13,13 +13,47 @@ import {
 import React from "react";
 import Link from "next/link";
 
-export const metadata = {
-  title: "خدماتنا | التسويق الرقمي، تطوير العلامة التجارية، والبرمجة",
-  description:
-    "استكشف خدماتنا الشاملة في وكالة لويالتي، بما في ذلك التسويق الرقمي، تطوير العلامة التجارية، والبرمجة. فريقنا الخبير في تركيا، دبي، والولايات المتحدة الأمريكية جاهز لرفع مستوى علامتك التجارية",
-  keywords:
-    "الخدمات، التسويق الرقمي، تطوير العلامة التجارية، البرمجة، وكالة لويالتي، تركيا، دبي، الولايات المتحدة الأمريكية، رفع مستوى العلامة التجارية",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=ar`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Services);
+    return {
+      title: page.pageseo.Services.pageseo_title,
+      description: `${page.pageseo.Services.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Services.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 
 async function getServicesData() {
   const res = await fetch(

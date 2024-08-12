@@ -23,14 +23,64 @@ import { poppinsClass } from "@/app/font";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 // import data from "@/app/content-en";
-export const metadata = {
-  title:
-    " Loyalty Agency | Brand Development, Digital Marketing, and Programming",
-  description:
-    " Welcome to Loyalty Agency, your partner in brand development, digital marketing, and programming. Founded in 2013, we have branches in Turkey, Dubai, and the USA. Discover how we can help your business succeed.",
-  keywords:
-    "Loyalty Agency, brand development, digital marketing, programming, Turkey, Dubai, USA, business success",
-};
+// export const metadata = {
+//   title:
+//     " Loyalty Agency | Brand Development, Digital Marketing, and Programming",
+//   description:
+//     " Welcome to Loyalty Agency, your partner in brand development, digital marketing, and programming. Founded in 2013, we have branches in Turkey, Dubai, and the USA. Discover how we can help your business succeed.",
+//   keywords:
+//     "Loyalty Agency, brand development, digital marketing, programming, Turkey, Dubai, USA, business success",
+// };
+
+
+
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Home);
+    return {
+      title: page.pageseo.Home.pageseo_title,
+      description: `${page.pageseo.Home.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Home.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
+
+
+
+
+
+
 async function getServicesData() {
   const res = await fetch(
     "https://seenfox.com/api/get_data.php?actions=service&lang_code=en",

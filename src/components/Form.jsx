@@ -157,7 +157,7 @@ const Form = ({ object }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          placeholder="full name"
+          placeholder="Full name"
           id="name"
           className=" p-3 mt-1 rounded-[10px] outline-none border-none text-primaryDark"
         />
@@ -169,7 +169,7 @@ const Form = ({ object }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           name="email"
-          placeholder="email"
+          placeholder="Email"
           required
           id="email"
           className=" p-3 mt-1 rounded-[10px] outline-none border-none text-primaryDark"

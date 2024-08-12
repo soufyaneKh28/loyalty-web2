@@ -14,13 +14,47 @@ import { cairoClass } from "@/app/font";
 import { contact, message, star, vision } from "../../../../public/assets";
 import Link from "next/link";
 
-export const metadata = {
-  title: "عن وكالة لويالتي | شريكك العالمي في الحلول الرقمية",
-  description:
-    "تعرّف على رحلة وكالة لويالتي منذ عام 2013 في تقديم الحلول الرقمية المبتكرة. مع فروع في تركيا، دبي، والولايات المتحدة الأمريكية، نحن ملتزمون بتحقيق نجاحك من خلال الخبرة في تطوير العلامة التجارية، التسويق الرقمي، والبرمجة.",
-  keywords:
-    "عن وكالة لويالتي، الحلول الرقمية، تطوير العلامة التجارية، التسويق الرقمي، البرمجة، شريك عالمي، تركيا، دبي، الولايات المتحدة الأمريكية",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=ar`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.About);
+    return {
+      title: page.pageseo.About.pageseo_title,
+      description: `${page.pageseo.About.pageseo_desc}`,
+      keywords: ` ${page.pageseo.About.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 
 async function getTeamData() {
   const res = await fetch(

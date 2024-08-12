@@ -11,13 +11,47 @@ import { homeHero, innov1, innovaition } from "../../../../public/assets";
 import data from "@/app/content-ar";
 import Link from "next/link";
 
-export const metadata = {
-  title: "ابتكاراتنا | حلول متطورة من وكالة لويالتي",
-  description:
-    "حافظ على الصدارة مع ابتكارات وكالة لويالتي في تطوير العلامة التجارية، التسويق الرقمي، والبرمجة. استكشف أحدث الحلول والاستراتيجيات المصممة لتعزيز أعمالك",
-  keywords:
-    "الابتكارات، حلول متطورة، تطوير العلامة التجارية، التسويق الرقمي، البرمجة، وكالة لويالتي، تعزيز الأعمالك",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=ar`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Home);
+    return {
+      title: page.pageseo.Home.pageseo_title,
+      description: `${page.pageseo.Home.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Home.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 
 async function getInnovationData() {
   const res = await fetch(

@@ -11,14 +11,47 @@ import { homeHero, innov1, innovaition } from "../../../../public/assets";
 import data from "@/app/content-en";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Our Innovations | Cutting-Edge Solutions by Loyalty Agency",
-  description:
-    "Stay ahead with Loyalty Agency's innovations in brand development, digital marketing, and programming. Explore our latest solutions and strategies designed to boost your business.",
-  keywords:
-    " innovations, cutting-edge solutions, brand development, digital marketing, programming, Loyalty Agency, business boost",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Home);
+    return {
+      title: page.pageseo.Home.pageseo_title,
+      description: `${page.pageseo.Home.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Home.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 async function getInnovationData() {
   const res = await fetch(
     "https://seenfox.com/api/get_data.php?actions=innovations&lang_code=en",

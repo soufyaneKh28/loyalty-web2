@@ -14,30 +14,64 @@ import {
 import Link from "next/link";
 import { MotionContainer, MotionLayout } from "@/components";
 
-export const metadata = {
-  title: "مدوناتنا | رؤى واتجاهات من وكالة لويالتي",
-  description:
-    "اقرأ مدوناتنا للحصول على رؤى والبقاء على اطلاع على أحدث الاتجاهات في تطوير العلامة التجارية، التسويق الرقمي، والبرمجة. تشارك وكالة لويالتي المعرفة الخبيرة لمساعدتك في نجاح عملك",
-  keywords:
-    "المدونات، رؤى، اتجاهات، تطوير العلامة التجارية، التسويق الرقمي، البرمجة، وكالة لويالتي، معرفة خبيرة",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=ar`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Blogs);
+    return {
+      title: page.pageseo.Blogs.pageseo_title,
+      description: `${page.pageseo.Blogs.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Blogs.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 
 const socialMedia = [
   {
     icon: facebook,
-    link: "",
+    link: "https://www.facebook.com/loyaltysocial",
   },
   {
     icon: instagram,
-    link: "",
+    link: "https://www.instagram.com/LOYALTYSOCIAL/",
   },
   {
     icon: linkedin,
-    link: "",
+    link: "https://www.linkedin.com/company/loyaltysocial",
   },
   {
     icon: x,
-    link: "",
+    link: "https://x.com/loyaltysocial",
   },
 ];
 export const productsLength = data.blogs.length;

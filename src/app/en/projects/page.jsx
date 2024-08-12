@@ -9,13 +9,47 @@ import Link from "next/link";
 import { delay } from "framer-motion";
 import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Our Projects | Loyalty Agency Success Stories",
-  description:
-    "Discover the successful projects by Loyalty Agency. From brand development to digital marketing and programming, see how we've helped businesses thrive in Turkey, Dubai, and the USA.",
-  keywords:
-    "projects, success stories, brand development, digital marketing, programming, Loyalty Agency, Turkey, Dubai, USA",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Projects);
+    return {
+      title: page.pageseo.Projects.pageseo_title,
+      description: `${page.pageseo.Projects.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Projects.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 
 export const productsLength = data.projects.length;
 export const defaultPage = 1;

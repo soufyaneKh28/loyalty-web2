@@ -283,7 +283,7 @@ const data = {
     phone: "Phone",
     service: "Service Type",
     project: "I want a project like",
-    btn: "send",
+    btn: "Send",
   },
   timeline: [
     {

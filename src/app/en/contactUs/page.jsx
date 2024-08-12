@@ -38,14 +38,47 @@ import Map from "@/components/Map";
 import Form from "@/components/Form";
 import data from "@/app/content-en";
 
-export const metadata = {
-  title: "Contact Loyalty Agency | Let's Start Your Success Journey",
-  description:
-    "Get in touch with Loyalty Agency. With offices in Turkey, Dubai, and the USA, we are ready to discuss your brand development, digital marketing, and programming needs. Let's start your success journey today!",
-  keywords:
-    " contact, Loyalty Agency, brand development, digital marketing, programming, Turkey, Dubai, USA, success journey",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  // const id = params.id
+  //  console.log('its id ===== ', params.blogId)
+  //  console.log('its id ===== ', params.blogTitle)
+  // fetch data
+  async function getBlogsData() {
+    const res = await fetch(
+      `https://seenfox.com/api/get_data.php?actions=pageseo&lang_code=en`,
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+  const page = await getBlogsData();
+
+  //  console.log('its page ===== ', page)
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+  if (page === null) {
+    // redirect("/en/not-found");
+  } else {
+    console.log("this is the description", page.pageseo.Blogs);
+    return {
+      title: page.pageseo.Contact.pageseo_title,
+      description: `${page.pageseo.Contact.pageseo_desc}`,
+      keywords: ` ${page.pageseo.Contact.pageseo_keywords}`,
+
+      // openGraph: {
+      //   images: ['/some-specific-page-image.jpg', ...previousImages],
+      // },
+    };
+  }
+}
 async function getPreferenceData() {
   const res = await fetch(
     "https://seenfox.com/api/get_data.php?actions=preference&lang_code=en",
