@@ -106,7 +106,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   if (product.blog === null) {
     redirect("/en/not-found");
   } else {
-    console.log("this is the description", product.blog.blog_desc);
+    // console.log("this is the description", product.blog.blog_desc);
     return {
       title: product.blog.blog_title,
       description: `${product.blog.blog_desc}`,
@@ -150,7 +150,24 @@ async function Page({ params }) {
   }
   const blogs = await getBlogsData();
 
-  let title = decodeURIComponent(params.blogTitle);
+  async function getBlogsDataAll() {
+    const res = await fetch(
+      "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=en",
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+
+  const blogsAll = await getBlogsDataAll();
+
   let blogObj = blogs.blog;
   // metadata.title = `${blogObj.blog_title}`;
   // console.log('it is bloogs =========>' ,blogObj)
@@ -176,7 +193,7 @@ async function Page({ params }) {
   ) {
     // exist = false;
     console.log("error");
-    console.log(blogObj.blog_title.replaceAll(" ", "-").replace("?", ""));
+    console.log(blogObj.blog_title.replaceAll(" ", "-").replaceAll("?", ""));
     console.log(params.blogTitle);
     redirect(`/en/not-found`);
   }
@@ -227,7 +244,7 @@ async function Page({ params }) {
                 <div>
                   <h4 className=" font-bold">RECENT POST</h4>
                   <div className="recent-blogs mt-3">
-                    {[...data.blogs]
+                    {[...blogsAll.blogs]
                       .slice(-3)
                       .reverse()
                       .map((blog, i) => (

@@ -43,9 +43,8 @@ const Footer = () => {
           </div>
           <p className=" text-white w-[350px] md:w-[220px]  mt-5 font-normal text-[15px]">
             Established in 2013, our company specializes in branding, digital
-            marketing, and programming. We expanded to Turkey in 2014, becoming
-            an official entity under Turkish marketing laws in 2020.
-            Additionally, we have branches in Dubai, UAE, and the USA.
+            marketing, and programming. We have branches in Dubai - UAE, London
+            - UK, Istanbul - Turkey, and USA.
           </p>
         </div>
         <div className="col my-5 ">
@@ -60,8 +59,19 @@ const Footer = () => {
                 height={30}
               />
               <Link href={""} className="mx-2 text-white">
-                Maltepe, Cevizlibağ Köprüsü No:8 Kat:11 No:137 , 34010
-                Zeytinburnu, 34010 Maltepe/İstanbuls
+                Istanbul - Turkey
+              </Link>
+            </div>
+            <div className=" py-1  flex">
+              <Image
+                src={location}
+                className="h-[30px]"
+                alt="location"
+                width={30}
+                height={30}
+              />
+              <Link href={""} className="mx-2 text-white">
+                London - United Kingdom
               </Link>
             </div>
             <div className=" py-3  flex items-center">
@@ -72,9 +82,14 @@ const Footer = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className="mx-2 text-white">
-                +90 546 544 41 96
-              </Link>
+              <div className=" flex flex-col">
+                <Link href={""} className="mx-2 text-white">
+                  +90 546 544 41 96
+                </Link>
+                <Link href={""} className="mx-2 pt-1 text-white">
+                  +90 546 544 41 96
+                </Link>
+              </div>
             </div>
             <div className=" py-3  flex items-center">
               <Image

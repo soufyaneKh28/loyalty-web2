@@ -43,7 +43,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   if (page === null) {
     // redirect("/en/not-found");
   } else {
-    console.log("this is the description", page.pageseo.Blogs);
+    // console.log("this is the description", page.pageseo.Blogs);
     return {
       title: page.pageseo.Blogs.pageseo_title,
       description: `${page.pageseo.Blogs.pageseo_desc}`,
@@ -82,34 +82,32 @@ for (let i = 1; i <= Math.ceil(productsLength / itemsPerPage); i++) {
   pagesArray.push(i);
 }
 
-async function getBlogsData() {
-  const res = await fetch(
-    "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=ar",
-    { cache: "no-store" }
-  );
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
-
 async function Blogs({ searchParams }) {
   // console.log(data.blogs.reverse());
+  async function getBlogsData() {
+    const res = await fetch(
+      "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=ar",
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
   let blogs = await getBlogsData();
 
   const page = Number(searchParams.page ? searchParams.page : defaultPage);
-  console.log(searchParams);
-  console.log("page", page);
+  // console.log(searchParams);
+  // console.log("page", page);
 
-  console.log("length", productsLength);
-  console.log("itemsparpage", itemsPerPage);
-  console.log("array", pagesArray);
+  // console.log("length", productsLength);
+  // console.log("itemsparpage", itemsPerPage);
+  // console.log("array", pagesArray);
   // i should solve the problem here
   if (page < 1 || page > Math.ceil(productsLength / itemsPerPage)) {
     redirect(`/en/not-found`);

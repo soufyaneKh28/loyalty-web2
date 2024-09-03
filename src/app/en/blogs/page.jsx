@@ -83,24 +83,24 @@ for (let i = 1; i <= Math.ceil(productsLength / itemsPerPage); i++) {
   pagesArray.push(i);
 }
 
-async function getBlogsData() {
-  const res = await fetch(
-    "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=en",
-    { cache: "no-store" }
-  );
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
 
 async function Blogs({ searchParams }) {
   // console.log(data.blogs.reverse());
+  async function getBlogsData() {
+    const res = await fetch(
+      "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=en",
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
 
   const blogs = await getBlogsData();
 
@@ -163,7 +163,9 @@ async function Blogs({ searchParams }) {
                           <Link
                             href={`/en/blogs/${
                               blog.blog_id
-                            }/${blog.blog_title.replaceAll(" ", "-")}`}
+                            }/${decodeURIComponent(
+                              blog.blog_title.replaceAll(" ", "-")
+                            )}`}
                             className="h-[100%] w-full block"
                           >
                             <Image
@@ -255,7 +257,7 @@ async function Blogs({ searchParams }) {
               <div>
                 <h4 className=" font-bold">RECENT POST</h4>
                 <div className="recent-blogs mt-3">
-                  {[...data.blogs]
+                  {[...blogs.blogs]
                     .reverse()
                     .slice(0, 3)
                     .map((blog, i) => (

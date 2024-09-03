@@ -107,7 +107,25 @@ async function Page({ params }) {
   //   console.log("Visual-Identity-Souq-alfurat");
   const blogs = await getBlogsData();
   let blogObj = blogs.blog;
-  let title = decodeURIComponent(params.blogTitle);
+
+  async function getBlogsDataAll() {
+    const res = await fetch(
+      "https://seenfox.com/api/get_data.php?actions=blogs&lang_code=ar",
+      { cache: "no-store" }
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+
+  const blogsAll = await getBlogsDataAll();
+
   // console.log("it iiiiiiiis gereratestatic ====>", title);
   // console.log("it is params=============>", params.blogTitle);
   // console.log(
@@ -172,7 +190,7 @@ async function Page({ params }) {
                 <div>
                   <h4 className=" font-bold">RECENT POST</h4>
                   <div className="recent-blogs mt-3">
-                    {[...data.blogs]
+                    {[...blogsAll.blogs]
                       .slice(-3)
                       .reverse()
                       .map((blog, i) => (

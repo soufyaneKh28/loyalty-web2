@@ -157,20 +157,20 @@ const data = {
     cta: "Contact Us",
   },
   heroAbout: {
-    title: "Discover Our Journey",
+    title: "About Loyalty Company",
     description:
-      "Founded in 2013, Loyalty specializes in brand development, digital marketing, and programming. With branches in Turkey, Dubai, and the USA, we are committed to your success.",
+      "Founded in 2015, Loyalty Company has evolved into a leading global provider of digital marketing, software solutions, design, and content creation services. Over the past decade, we’ve built a reputation for excellence, innovation, and reliability, becoming the trusted partner for businesses worldwide.",
     cta: "Get Started",
     items: {
       message: {
-        title: "Our Message ",
+        title: "Our Mission",
         description:
-          "Helping our clients to achieve the best growth towards stability through smart and creative marketing mixed with a clear strategy.",
+          "Our mission is to empower businesses by providing innovative and effective digital solutions. We are committed to delivering excellence in every project, ensuring that our clients not only meet but exceed their goals.",
       },
       vision: {
         title: "Our Vision",
         description:
-          "Helping our clients to achieve the best growth towards stability through smart and creative marketing mixed with a clear strategy.",
+          "Our vision is to be the global leader in digital marketing and software solutions, known for our ability to drive success through creativity, technology, and strategic insight.",
       },
       features: {
         title: "Our Features",
@@ -211,11 +211,13 @@ const data = {
   },
   features: {
     smallTitle: "Our Features",
-    title: "The Best Company in Istanbul",
-    description: `We are the best because we mix marketing, programming, and intricate design together to get the best results. After we develop your own brand identity, 
-    we help you grow your brand by preparing marketing campaigns through social media and search engines.
-    
-    In parallel we develop your website in addition to applications and programs for customer's relations, sales, and accounting.`,
+    title: "Your Trusted Partner in Success",
+    description: `We excel by blending marketing, programming,
+     and intricate design to achieve outstanding results. After crafting a 
+     unique brand identity for your business, we help you grow by launching effective 
+     marketing campaigns across social media and search engines. Simultaneously,
+      we develop websites, applications, and software solutions for customer
+       relations, sales, and accounting to meet your business needs.`,
     items: [
       {
         icon: strategy,
@@ -252,9 +254,8 @@ const data = {
   },
   partners: {
     smallTitle: "Our Partners",
-    title: "Our Partners in The Journey To Succeed",
-    description: `Since the beginning of our journey these companies have helped us pave the way of success.
-     Working side by side for enough time we have become partners and the go to source for their services.
+    title: "Partner with Loyalty Company",
+    description: `Join the ranks of the many successful businesses that trust Loyalty Company to elevate their digital presence. Whether you’re a startup looking to make a mark or an established enterprise aiming to reach new heights, we are here to support you every step of the way.
     `,
   },
   grow: {
@@ -287,26 +288,20 @@ const data = {
   },
   timeline: [
     {
-      title: "Move to Turkey",
-      date: "14 January 2014",
+      title: "Strategic Expansion: Our New Istanbul Branch",
+      date: "2017 – Istanbul, Turkey",
       description:
-        "Setting up ( Loyalty) headquarters in turkey in Istanbul in 2014 in the world trade center in Istanbul, which made the company stand out with its strategic location. Loyalty's team was made up of 4 people who were determined to implement the vision of the company",
+        "Recognizing the strategic importance of the Middle East and Europe, we established our first international branch in Istanbul, registered under company number 6091025993. This expansion allowed us to bring our expertise closer to clients in these regions, offering localized support and tailored services.",
     },
     {
-      title: "The official headquarters",
-      date: "28 March 2018",
-      description: ` New headquarters was opened in the "Vision Park" building in "Yeni Bosna" area in İstanbul. With 140 square meters of office space, making it the 2nd headquarters of the company. Now the team is made up of 8 people all sharing their expertise in their fields while holding on to the company's vision and goals`,
+      title: "Expanding into the Gulf: Our New UAE Branch",
+      date: "2021 – UAE",
+      description: ` To further our commitment to the rapidly growing Gulf markets, we launched a branch in the UAE. This step enabled us to address the unique challenges and opportunities in the Middle East, providing innovative solutions that drive business success.`,
     },
     {
-      title: "Moving downtown",
-      date: "10 December 2019",
-      description: `The company moved to downtown Istanbul so that it can be close to all the major airports and transportation. "Cevizlibağ" area is where we are located. After much success and many more clients our team grew to 15 people all specialized in their fields and loyal to our company's vision.`,
-    },
-    {
-      title: "Worldwide",
-      date: "05 May 2021",
-      description:
-        "Opening up branches of the company in The United States of America and in Dubai to make it closer to all of our clients around the world. Loyalty team are now around 20 employees specializing in marketing, design, and programming.",
+      title: "UK Expansion: A Key Milestone in Our European Growth",
+      date: "2022 – United Kingdom",
+      description: `Our latest expansion into the UK, registered under company number 15257632, marked a significant milestone. This move strengthened our presence in Europe and enhanced our ability to serve clients across the continent and beyond.`,
     },
   ],
   logos: team.logo,

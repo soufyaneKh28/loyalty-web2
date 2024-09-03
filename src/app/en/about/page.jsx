@@ -107,7 +107,7 @@ async function Page() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <h1 className=" text-[40px] max-w-[350px] md:text-[50px] md:max-w-[600px] font-bold text-primaryDark leading-[40px] md:*:text-center md:leading-[60px]">
+              <h1 className=" text-[40px] max-w-[400px] md:text-[50px] md:max-w-[600px] font-bold text-primaryDark leading-[40px] md:*:text-center md:leading-[60px]">
                 {data.heroAbout.title}
               </h1>
             </MotionContainer>
@@ -211,14 +211,12 @@ async function Page() {
               <p className=" text-secondary">Who Are We ?</p>
             </div>
             <h2 className=" text-[26px] md:text-[32px] font-bold text-center">
-              Your Work Grows With Us
+              Our Journey of Growth
             </h2>
           </div>
           <p className="text-center max-w-[550px] mt-3">
-            Established in 2013, our company specializes in branding, digital
-            marketing, and programming. We expanded to Turkey in 2014, becoming
-            an official entity under Turkish marketing laws in 2020.
-            Additionally, we have branches in Dubai, UAE, and the USA.
+            Loyalty Company has continuously expanded its operations to better
+            serve our clients and adapt to the dynamic digital landscape:
           </p>
         </div>
         <div className="container mt-[100px] ">
