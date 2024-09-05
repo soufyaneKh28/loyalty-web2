@@ -1,5 +1,6 @@
 import { Footer } from "@/components";
 import Menubar from "@/components/Menubar";
+import ContactBtn from "@/components/ui/ContactBtn";
 
 import { Poppins, Roboto } from "next/font/google";
 import Head from "next/head";
@@ -28,6 +29,9 @@ export default function enLayout({ children }) {
       </head>
       <body>
         <Menubar />
+
+        <ContactBtn />
+
         {children}
         <Footer />
       </body>

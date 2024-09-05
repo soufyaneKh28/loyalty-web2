@@ -4,6 +4,7 @@ import {
   IconsSlider,
   MotionContainer,
   MotionLayout,
+  Services,
   Statis,
 } from "@/components";
 import Team from "@/components/Team";
@@ -88,10 +89,25 @@ async function getCounterData() {
   return res.json();
 }
 
+async function getServicesData() {
+  const res = await fetch(
+    "https://seenfox.com/api/get_data.php?actions=service&lang_code=ar",
+    { cache: "no-store" }
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
 async function Page() {
   const team = await getTeamData();
   const counter = await getCounterData();
-
+  const services = await getServicesData();
   return (
     <main className={`${cairoClass} `}>
       <section className={`"flex  pb-[100px] py-[150px] md:pt-[200px] `}>
@@ -127,7 +143,7 @@ async function Page() {
             transition={{ duration: 1.6, delay: 1 }}
           >
             <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+              <div className="embla__slide__number transition-colors min-h-[273px]">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={message}
@@ -152,7 +168,7 @@ async function Page() {
             transition={{ duration: 1.6, delay: 1.3 }}
           >
             <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+              <div className="embla__slide__number transition-colors min-h-[273px]">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={vision}
@@ -177,7 +193,7 @@ async function Page() {
             transition={{ duration: 1.6, delay: 1.6 }}
           >
             <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+              <div className="embla__slide__number transition-colors min-h-[273px]">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={star}
@@ -251,6 +267,23 @@ async function Page() {
             ))}
           </div>
         </div>
+      </section>
+      <section className="py-5 servicesAr">
+        <div className="container flex flex-col items-center justify-center my-10">
+          <div className=" flex flex-col items-start">
+            <div className="flex items-center mb-[-5px]">
+              <div className="w-[60px] h-[2px] bg-secondary mr-1"></div>
+              <p className=" text-secondary font-bold">
+                {dataAr.services.smallTitle}
+              </p>
+            </div>
+            <h2 className="text-[32px] font-bold">{dataAr.services.title}</h2>
+          </div>
+          <p className="text-center max-w-[550px]">
+            {dataAr.services.description}
+          </p>
+        </div>
+        <Services object={services.service} options={"rtl"} />
       </section>
       <section className=" p-10">
         <MotionLayout>

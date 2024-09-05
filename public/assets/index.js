@@ -34,7 +34,10 @@ import notFound from "./not-found.svg";
 import downArrow from "./down-arrow.png";
 import uk from "./uk.png";
 import ar from "./ar.webp";
+
+import whatsApp_stikey from "./whatsapp-stikey.svg";
 export {
+  whatsApp_stikey,
   logo,
   menu,
   close,

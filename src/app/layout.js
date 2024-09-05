@@ -3,6 +3,7 @@
 import Menubar from "@/components/Menubar";
 import "./globals.css";
 import Head from "next/head";
+import ContactBtn from "@/components/ui/ContactBtn";
 // import { GoogleFont } from "@next/font/google";
 
 // const myFont = GoogleFont({
@@ -23,7 +24,10 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/assets/favicon.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+        <ContactBtn />
+        {children}
+      </body>
     </html>
   );
 }

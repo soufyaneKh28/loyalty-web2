@@ -50,7 +50,7 @@ const Footer = () => {
         <div className="col my-5 ">
           <h3 className=" font-semibold text-white text-[20px]">Company</h3>
           <div className="mt-2">
-            <div className=" py-3  flex">
+            <div className=" py-3  flex items-center">
               <Image
                 src={location}
                 className="h-[30px]"
@@ -58,22 +58,16 @@ const Footer = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className="mx-2 text-white">
-                Istanbul - Turkey
-              </Link>
+              <div className=" flex flex-col">
+                <Link href={""} className="mx-2 text-white">
+                  Istanbul - Turkey
+                </Link>
+                <Link href={""} className="mx-2 pt-1 text-white">
+                  London - United Kingdom
+                </Link>
+              </div>
             </div>
-            <div className=" py-1  flex">
-              <Image
-                src={location}
-                className="h-[30px]"
-                alt="location"
-                width={30}
-                height={30}
-              />
-              <Link href={""} className="mx-2 text-white">
-                London - United Kingdom
-              </Link>
-            </div>
+
             <div className=" py-3  flex items-center">
               <Image
                 src={phone}
@@ -84,7 +78,7 @@ const Footer = () => {
               />
               <div className=" flex flex-col">
                 <Link href={""} className="mx-2 text-white">
-                  +90 546 544 41 96
+                  +44 7537 107245
                 </Link>
                 <Link href={""} className="mx-2 pt-1 text-white">
                   +90 546 544 41 96

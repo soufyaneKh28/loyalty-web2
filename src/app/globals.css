@@ -816,3 +816,13 @@ background-color: #9797977e;
 .project {
   background: linear-gradient(3deg, #27272F 34.73%, rgba(39, 39, 47, 0.71) 75.63%, rgba(39, 39, 47, 0.00) 97.93%);
 }
+
+
+.whatsapp {
+  right: 5px;
+  position: fixed;
+  /* top: 409px; */
+  width: 70px;
+  z-index: 1500;
+  bottom: 130px;
+}

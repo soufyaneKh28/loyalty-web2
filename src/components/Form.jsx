@@ -180,7 +180,7 @@ const Form = ({ object }) => {
         <div>
           {/* <label htmlFor="phone">Phone</label> */}
           <PhoneInput
-            defaultCountry="tr"
+            defaultCountry="gb"
             value={phone}
             onChange={(phone) => setPhone(phone)}
             className=" font-semibold"

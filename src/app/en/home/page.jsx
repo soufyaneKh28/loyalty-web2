@@ -22,6 +22,7 @@ import { motionContainer } from "@/components/ui/motionContainer";
 import { poppinsClass } from "@/app/font";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import ContactBtn from "@/components/ui/ContactBtn";
 // import data from "@/app/content-en";
 // export const metadata = {
 //   title:
@@ -31,8 +32,6 @@ import Link from "next/link";
 //   keywords:
 //     "Loyalty Agency, brand development, digital marketing, programming, Turkey, Dubai, USA, business success",
 // };
-
-
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -75,11 +74,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
     };
   }
 }
-
-
-
-
-
 
 async function getServicesData() {
   const res = await fetch(
@@ -152,6 +146,7 @@ export default async function Home() {
   return (
     <main className={`${poppinsClass}`}>
       <section className={`"flex  pb-5 pt-[100px] `}>
+       
         <div className="container md:justify-between md:items-center  flex flex-col md:flex-row">
           <MotionContainer
             initial={{ opacity: 0, y: 100 }}

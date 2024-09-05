@@ -10,7 +10,7 @@ const PhoneInputT = () => {
     <div>
       {/* <label htmlFor="phone">Phone</label> */}
       <PhoneInput
-        defaultCountry="tr"
+        defaultCountry="uk"
         value={phone}
         onChange={(phone) => setPhone(phone)}
         className=""

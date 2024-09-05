@@ -6,6 +6,7 @@ import {
   IconsSlider,
   MotionContainer,
   MotionLayout,
+  Services,
   Statis,
 } from "@/components";
 import Image from "next/image";
@@ -79,6 +80,21 @@ async function getTeamData() {
   return res.json();
 }
 
+async function getServicesData() {
+  const res = await fetch(
+    "https://seenfox.com/api/get_data.php?actions=service&lang_code=en",
+    { cache: "no-store" }
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
 async function getCounterData() {
   const res = await fetch(
     "https://seenfox.com/api/get_data.php?actions=counter&lang_code=en",
@@ -97,6 +113,7 @@ async function getCounterData() {
 async function Page() {
   const team = await getTeamData();
   const counter = await getCounterData();
+  const services = await getServicesData();
   return (
     <main className={`${poppinsClass}`}>
       <section className={`"flex  pb-5 py-[150px] `}>
@@ -131,8 +148,8 @@ async function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 1 }}
           >
-            <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+            <div className="embla__slide ">
+              <div className="embla__slide__number min-h-[273px] transition-colors">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={message}
@@ -157,7 +174,7 @@ async function Page() {
             transition={{ duration: 1.6, delay: 1.3 }}
           >
             <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+              <div className="embla__slide__number transition-colors  min-h-[273px]">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={vision}
@@ -182,7 +199,7 @@ async function Page() {
             transition={{ duration: 1.6, delay: 1.6 }}
           >
             <div className="embla__slide">
-              <div className="embla__slide__number transition-colors">
+              <div className="embla__slide__number transition-colors  min-h-[273px]">
                 <div className=" img-container h-[60px] w-[60px] p-3 rounded-full bg-[#98E4E8]">
                   <Image
                     src={star}
@@ -255,6 +272,25 @@ async function Page() {
             ))}
           </div>
         </div>
+      </section>
+      <section className="py-5">
+        <MotionLayout>
+          <div className="container flex flex-col items-center justify-center my-10">
+            <div className=" flex flex-col items-start">
+              <div className="flex items-center mb-[-5px]">
+                <div className="w-[60px] h-[2px] bg-secondary mr-1"></div>
+                <p className=" text-secondary">{data.services.smallTitle}</p>
+              </div>
+              <h2 className=" text-[26px] md:text-[32px] font-bold">
+                {data.services.title}
+              </h2>
+            </div>
+            <p className="text-center max-w-[550px] mt-3">
+              {data.services.description}
+            </p>
+          </div>
+          <Services object={services.service} />
+        </MotionLayout>
       </section>
       <section className=" py-10">
         <MotionLayout>

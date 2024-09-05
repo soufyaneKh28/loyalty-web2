@@ -165,7 +165,7 @@ const data = {
       message: {
         title: "Our Mission",
         description:
-          "Our mission is to empower businesses by providing innovative and effective digital solutions. We are committed to delivering excellence in every project, ensuring that our clients not only meet but exceed their goals.",
+          "Our mission is to empower businesses with innovative digital solutions, delivering excellence to help clients exceed their goals.",
       },
       vision: {
         title: "Our Vision",

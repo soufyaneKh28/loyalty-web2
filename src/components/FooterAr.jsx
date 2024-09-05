@@ -52,7 +52,7 @@ const FooterAr = () => {
         <div className="col my-5 ">
           <h3 className=" font-semibold text-white text-[20px]">الشركة</h3>
           <div className="mt-2">
-            <div className=" py-3  flex">
+            {/* <div className=" py-3  flex">
               <Image
                 src={location}
                 className="h-[30px]"
@@ -60,11 +60,8 @@ const FooterAr = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className="mx-2 text-white">
-                اسطنبول - تركيا
-              </Link>
-            </div>
-            <div className=" py-1  flex">
+            </div> */}
+            <div className=" py-1  flex items-center">
               <Image
                 src={location}
                 className="h-[30px]"
@@ -72,10 +69,27 @@ const FooterAr = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className="mx-2 text-white">
-                لندن - المملكة المتحدة
-              </Link>
+              <div className=" flex flex-col">
+                <Link href={""} className="mx-2 text-white">
+                  اسطنبول - تركيا
+                </Link>
+                <Link href={""} className="mx-2 pt-1 text-white">
+                  لندن - المملكة المتحدة
+                </Link>
+              </div>
             </div>
+            {/* <div className=" py-3  flex items-center">
+              <Image
+                src={phone}
+                className="h-[30px]"
+                alt="location"
+                width={30}
+                height={30}
+              />
+              <Link href={""} dir="ltr" className="mx-2  text-white">
+                +44 7537 107245
+              </Link>
+            </div> */}
             <div className=" py-3  flex items-center">
               <Image
                 src={phone}
@@ -84,21 +98,14 @@ const FooterAr = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} dir="ltr" className="mx-2  text-white">
-                +90 546 544 41 96
-              </Link>
-            </div>
-            <div className=" py-1  flex items-center">
-              <Image
-                src={phone}
-                className="h-[30px]"
-                alt="location"
-                width={30}
-                height={30}
-              />
-              <Link href={""} dir="ltr" className="mx-2  text-white">
-                +90 546 544 41 96
-              </Link>
+              <div className=" flex flex-col">
+                <Link href={""} className="mx-2 text-white">
+                  +44 7537 107245
+                </Link>
+                <Link href={""} className="mx-2 pt-1 text-white">
+                  +90 546 544 41 96
+                </Link>
+              </div>
             </div>
             <div className=" py-3  flex items-center">
               <Image
