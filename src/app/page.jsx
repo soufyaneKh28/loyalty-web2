@@ -24,6 +24,7 @@ import { motionContainer } from "@/components/ui/motionContainer";
 import { poppinsClass } from "@/app/font";
 import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import ContactBtn from "@/components/ui/ContactBtn";
 // import data from "@/app/content-en";
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -138,6 +139,8 @@ export default async function Home() {
   return (
     <>
       <Menubar />
+      <ContactBtn />
+
       <main className={`${poppinsClass}`}>
         <section className={`"flex  pb-5 pt-[100px] `}>
           <div className="container md:justify-between md:items-center  flex flex-col md:flex-row">

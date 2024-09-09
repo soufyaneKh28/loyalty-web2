@@ -35,9 +35,13 @@ import downArrow from "./down-arrow.png";
 import uk from "./uk.png";
 import ar from "./ar.webp";
 
-import whatsApp_stikey from "./whatsapp-stikey.svg";
+import whatsApp_stikey from "./Wmessage1.png";
+import whatsApp_stikey2 from "./whatsapp.png";
+import whatsApp_stikey2Mo from "./whatsappMo.png";
 export {
+  whatsApp_stikey2,
   whatsApp_stikey,
+  whatsApp_stikey2Mo,
   logo,
   menu,
   close,

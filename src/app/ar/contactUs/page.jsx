@@ -147,7 +147,7 @@ async function page() {
           </div>
         </section>
         <section>
-          <div className=" bg-secondary flex flex-col md:flex-row  ">
+          {/* <div className=" bg-secondary flex flex-col md:flex-row  ">
             <div className="container flex flex-col md:flex-row">
               <div className=" flex flex-col items-start justify-center my-10">
                 <div className=" flex flex-col items-start">
@@ -170,7 +170,7 @@ async function page() {
               </div>
             </div>
             <Map />
-          </div>
+          </div> */}
         </section>
       </MotionLayout>
     </main>

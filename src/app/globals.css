@@ -826,3 +826,31 @@ background-color: #9797977e;
   z-index: 1500;
   bottom: 130px;
 }
+
+.whatsapp-message{
+  display: none;
+  transition: 0.3s all ease;
+}
+
+.cta-buttons {
+  min-height: 500px;
+  width: fit-content;
+  direction: ltr !important;
+  z-index: 1000;
+}
+ 
+.rtl .cta-buttons {
+  direction: ltr !important;
+}
+
+.cta-buttons .whatsApp_stikey {
+  cursor: pointer;
+}
+
+.mobile {
+  box-shadow: -1px 0px 10px 1px #a5a5a58a;
+}
+
+.cta-buttons:hover .whatsapp-message {
+  display: block;
+}

@@ -151,7 +151,7 @@ export default async function Home() {
                 </h1>
               </MotionContainer>
               <p className="   max-w-[300px] md:max-w-[400px] text-[#686567] text-[16px] my-3 mt-5 leading-7  font-semibold">
-                لويلتي هي شريكك في تطوير العلامات التجارية والتسويق الرقمي
+                لويالتي هي شريكك في تطوير العلامات التجارية والتسويق الرقمي
                 والبرمجة. اكتشف كيف يمكننا رفع عملك إلى آفاق جديدة
               </p>
               <Button href={"/ar/contactUs"}>تواصل معنا</Button>

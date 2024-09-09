@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/assets/favicon.ico" />
       </head>
       <body>
-        <ContactBtn />
+        {/* <ContactBtn /> */}
         {children}
       </body>
     </html>
