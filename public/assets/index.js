@@ -1,4 +1,4 @@
-import logo from "./loyaltyLogo.png";
+import logo from "./loyalty-l.png";
 import menu from "./MenuMOB.png";
 import close from "./close.webp";
 

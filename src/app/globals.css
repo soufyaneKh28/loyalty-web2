@@ -226,9 +226,15 @@
     align-items: center;
     justify-content: center;
     background-color: #F8360A;
+    transition: 0.3s ease all;
   }
   .embla__button:disabled {
     color: var(--detail-high-contrast);
+  }
+
+  .embla__button:hover{
+    background-color: #ffa78c;
+    
   }
   .embla__button__svg {
     width: 35%;
@@ -854,3 +860,23 @@ background-color: #9797977e;
 .cta-buttons:hover .whatsapp-message {
   display: block;
 }
+
+
+.ar-phone {
+  direction: ltr ;
+}
+/* #menu-{
+  position: absolute;
+  top: 350px;
+  /* bottom: 0; */
+
+
+/* .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  top: 250px !important;
+ }
+
+ @media (max-width: 769px) {
+  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    top: 675px !important;
+   }
+} */

@@ -47,7 +47,7 @@ const Form = ({ object }) => {
     fullname: name,
     email: email,
     mobile: phone,
-    services: services2 && [...services2],
+    services: services2 && services2?.map((service) => service?.value),
 
     projects: [""],
   };
@@ -69,7 +69,8 @@ const Form = ({ object }) => {
       email.length < 5 ||
       !phone ||
       phone.length < 5 ||
-      !services
+      services2?.length === 0 ||
+      services2 == undefined
     ) {
       setVisible(true);
       setTimeout(() => {
@@ -107,7 +108,7 @@ const Form = ({ object }) => {
     setEmail("");
     setPhone("");
     // setProject(null);
-    setServices(null);
+    setServices2([]);
     // setAge("");
   };
 
@@ -126,6 +127,8 @@ const Form = ({ object }) => {
     setProject(value);
     console.log("project value:", value);
   };
+
+  console.log(services2?.map((service) => service?.value));
 
   return (
     <form
@@ -194,9 +197,9 @@ const Form = ({ object }) => {
         <div className="select">
           <Select
             primaryColor={"orange"}
-            value={services}
+            value={services2}
             onChange={handleServiceChange}
-            options={ServiceTypeOptions}
+            options={object.ServiceTypeOptions}
             isMultiple={true}
             isSearchable={true}
           />
@@ -226,6 +229,7 @@ const Form = ({ object }) => {
       </div> */}
       <button
         onClick={handleSubmit}
+        // onClick={console.log(name, email, services2, phone)}
         className=" bg-secondary py-3 px-10 mt-5 rounded-full font-bold "
       >
         {object.btn}

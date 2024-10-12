@@ -285,6 +285,24 @@ const data = {
     service: "Service Type",
     project: "I want a project like",
     btn: "Send",
+    ServiceTypeOptions: [
+      {
+        value: "Marketing through social media",
+        label: "Marketing through social media",
+      },
+      { value: "Content Marketing", label: "Content Marketing" },
+      { value: "Digital Marketing", label: "Digital Marketing" },
+      { value: "Landing pages", label: "Landing pages" },
+      { value: "Logo & Visual Identity", label: "Logo & Visual Identity" },
+      { value: "Mobile Application", label: "Mobile Application" },
+      { value: "Production Services", label: "Production Services" },
+      {
+        value: "Search Engine Optimization",
+        label: "Search Engine Optimization",
+      },
+      { value: "Websites", label: "Websites" },
+      { value: "Other", label: "Other" },
+    ],
   },
   timeline: [
     {

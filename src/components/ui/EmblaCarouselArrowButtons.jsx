@@ -43,12 +43,12 @@ export const PrevButton = (props) => {
 
   return (
     <button
-      className="embla__button embla__button--prev"
+      className="bg-black embla__button  "
       type="button"
       aria-label="next-button"
       {...restProps}
     >
-      <Image src={prev} alt="prev" />
+      <Image src={next} alt="prev " className=" rotate-[180deg]" />
       {children}
     </button>
   );
@@ -59,7 +59,7 @@ export const NextButton = (props) => {
 
   return (
     <button
-      className="embla__button embla__button--next"
+      className="embla__button "
       type="button"
       aria-label="next-button"
       {...restProps}

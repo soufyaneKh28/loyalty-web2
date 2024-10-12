@@ -59,12 +59,10 @@ const Footer = () => {
                 height={30}
               />
               <div className=" flex flex-col">
-                <Link href={""} className="mx-2 text-white">
-                  Istanbul - Turkey
-                </Link>
-                <Link href={""} className="mx-2 pt-1 text-white">
+                <div className="mx-2 text-white">Istanbul - Turkey</div>
+                <div className="mx-2 pt-1 text-white">
                   London - United Kingdom
-                </Link>
+                </div>
               </div>
             </div>
 
@@ -77,10 +75,18 @@ const Footer = () => {
                 height={30}
               />
               <div className=" flex flex-col">
-                <Link href={""} className="mx-2 text-white">
+                <Link
+                  href={"https://wa.me/+447537107245"}
+                  target="_blank"
+                  className="mx-2 text-white"
+                >
                   +44 7537 107245
                 </Link>
-                <Link href={""} className="mx-2 pt-1 text-white">
+                <Link
+                  href={"https://wa.me/+905465444196"}
+                  target="_blank"
+                  className="mx-2 pt-1 text-white"
+                >
                   +90 546 544 41 96
                 </Link>
               </div>
@@ -93,7 +99,10 @@ const Footer = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className=" mx-2 text-white">
+              <Link
+                href={"mailto:info@loyalty.com.tr"}
+                className=" mx-2 text-white"
+              >
                 info@loyalty.com.tr
               </Link>
             </div>

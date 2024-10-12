@@ -70,12 +70,10 @@ const FooterAr = () => {
                 height={30}
               />
               <div className=" flex flex-col">
-                <Link href={""} className="mx-2 text-white">
-                  اسطنبول - تركيا
-                </Link>
-                <Link href={""} className="mx-2 pt-1 text-white">
+                <div className="mx-2 text-white">اسطنبول - تركيا</div>
+                <div className="mx-2 pt-1 text-white">
                   لندن - المملكة المتحدة
-                </Link>
+                </div>
               </div>
             </div>
             {/* <div className=" py-3  flex items-center">
@@ -99,10 +97,16 @@ const FooterAr = () => {
                 height={30}
               />
               <div className=" flex flex-col">
-                <Link href={""} className="mx-2 text-white">
+                <Link
+                  href={"https://wa.me/+447537107245"}
+                  className="mx-2 ar-phone text-white"
+                >
                   +44 7537 107245
                 </Link>
-                <Link href={""} className="mx-2 pt-1 text-white">
+                <Link
+                  href={"https://wa.me/+905465444196"}
+                  className="mx-2 pt-1 ar-phone text-white"
+                >
                   +90 546 544 41 96
                 </Link>
               </div>
@@ -115,7 +119,10 @@ const FooterAr = () => {
                 width={30}
                 height={30}
               />
-              <Link href={""} className=" mx-2 text-white">
+              <Link
+                href={"mailto:info@loyalty.com.tr"}
+                className=" mx-2 text-white"
+              >
                 info@loyalty.com.tr
               </Link>
             </div>
@@ -179,7 +186,7 @@ const FooterAr = () => {
             </Link> */}
             {socialMedia.map((icon, i) => (
               <Link href={icon.link} key={i}>
-                <div className=" icon w-[50px] h-[50px] hover:bg-white transition-colors bg-secondary rounded-full flex justify-center items-center">
+                <div className=" icon w-[39px] h-[39px] hover:bg-white transition-colors bg-secondary rounded-full flex justify-center items-center">
                   <Image src={icon.icon} alt="facebook" width={28} />
                 </div>
               </Link>

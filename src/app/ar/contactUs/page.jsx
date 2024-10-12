@@ -115,7 +115,7 @@ async function page() {
                   <div className=" bg-primaryDark w-[40px] h-[40px] rounded-full flex justify-center items-center p-2">
                     <Image src={phone} alt="phone" width={30} />
                   </div>
-                  <p className=" " dir=" ltr">
+                  <p className="ar-phone " dir=" ltr">
                     {preference.preference[0].preference_phone}
                   </p>
                 </div>
