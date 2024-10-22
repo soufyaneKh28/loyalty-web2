@@ -17,7 +17,7 @@ const ContactBtn = () => (
       <div className=" bottom-[20px] left-5 cta-buttons flex items-end fixed">
         <div className=" bg-secondary shadow-2xl transition-all  absolute hover:scale-110 w-10 h-10 p-1 rounded-[5px]">
           <Link
-            href="https://wa.me/+905013444144"
+            href="https://wa.me/+905345819193"
             target="_blank"
             className="         "
           >
@@ -29,9 +29,10 @@ const ContactBtn = () => (
         </div>
       </div>
     </div>
+    {/* mobile version for the button  */}
     <div className=" fixed  bottom-[-1px] mobile flex md:hidden z-50  bg-white w-full">
       <Link
-        href="https://wa.me/+905013444144"
+        href="https://wa.me/+905345819193"
         target="_blank"
         className="  w-full h-full px-2 py-3   flex items-center justify-center    "
       >
